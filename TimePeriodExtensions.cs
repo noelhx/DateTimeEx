@@ -8,7 +8,7 @@ namespace Strange1.Utility.DateTimeExtensions
 {
     public static class TimePeriodExtensions
     {
-        private static TimePeriodExtensions() { }
+        static TimePeriodExtensions() { }
 
         public static IEnumerable<DateTime> GetAllDates(this TimePeriod timePeriod)
         {

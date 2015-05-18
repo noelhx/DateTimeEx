@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RACE.FTVP.Utility.Extensions.ItemWrapper")]
+[assembly: AssemblyTitle("Strange1.Utility.DateTimeExtensions")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Rockwell Automation")]
-[assembly: AssemblyProduct("RACE.FTVP.Utility.Extensions.ItemWrapper")]
-[assembly: AssemblyCopyright("Copyright © Rockwell Automation 2014")]
+[assembly: AssemblyCompany("Noel Henderson")]
+[assembly: AssemblyProduct("Strange1.Utility.DateTimeExtensions")]
+[assembly: AssemblyCopyright("Copyright © Noel Henderson 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("35b8e519-2fae-45bc-8a42-663317637ec3")]
+[assembly: Guid("3F4A7EE0-9BC1-4E16-A6B7-146846D7F9C2")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,7 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("6.0.150.0")]
-[assembly: AssemblyFileVersion("6.0.150.0")]
-[assembly: AssemblyInformationalVersion("6.0.155.0")]
+[assembly: AssemblyVersion("1.0.*")]
 
