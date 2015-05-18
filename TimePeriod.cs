@@ -24,6 +24,7 @@ namespace Strange1.Utility.DateTimeExtensions
         }
 
         private DateTime _startTime = DateTime.MinValue;
+
         public DateTime StartTime
         {
             get { return _startTime; }
@@ -38,10 +39,10 @@ namespace Strange1.Utility.DateTimeExtensions
                     throw new InvalidTimePeriodException("StartTime {0} must be less than EndTime {1}", value, _endTime.ToString("o"));
                 }
             }
-
         }
 
         private DateTime _endTime = DateTime.MaxValue;
+
         public DateTime EndTime
         {
             get
@@ -84,12 +85,11 @@ namespace Strange1.Utility.DateTimeExtensions
 
         static public TimePeriod operator +(TimePeriod a, TimePeriod b)
         {
-            if (a.Overlaps(b))
-            {
-                DateTime start = a.StartTime <= b.StartTime ? a.StartTime : b.StartTime;
-                DateTime end = b.EndTime >= a.EndTime ? b.EndTime : a.EndTime;
-                return new TimePeriod(start, end);
-            }
+            TimePeriod timePeriod = new TimePeriod(DateTime.MinValue, DateTime.MaxValue);
+
+            timePeriod.StartTime = a.UtcStartTime < b.UtcStartTime ? a.UtcStartTime : b.UtcStartTime;
+            timePeriod.EndTime = a.UtcEndTime > b.UtcEndTime ? a.UtcEndTime : b.UtcEndTime;
+
             return null;
         }
 
@@ -100,8 +100,7 @@ namespace Strange1.Utility.DateTimeExtensions
 
         int IComparable.CompareTo(object targetObj)
         {
-
-            if(targetObj == null)
+            if (targetObj == null)
             {
                 return -1;
             }
@@ -109,7 +108,6 @@ namespace Strange1.Utility.DateTimeExtensions
             try
             {
                 TimePeriod target = targetObj as TimePeriod;
-
 
                 if (this.IsEqualTo(target))
                 {
@@ -129,12 +127,11 @@ namespace Strange1.Utility.DateTimeExtensions
                 }
                 return -1;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return -1;
             }
         }
-
 
         public override bool Equals(object obj)
         {

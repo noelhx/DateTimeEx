@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Strange1.Utility.DateTimeExtensions
+﻿namespace Strange1.Utility.DateTimeExtensions
 {
     /// <summary>
     /// see https://www.ics.uci.edu/~alspaugh/cls/shr/allen.html

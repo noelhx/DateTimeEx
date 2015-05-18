@@ -18,6 +18,5 @@ namespace Strange1.Utility.DateTimeExtensions
 
         public InvalidTimePeriodException(string format, Exception innerException, params object[] args)
             : base(string.Format(format, args), innerException) { }
-
     }
 }

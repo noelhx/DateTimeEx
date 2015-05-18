@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Globalization;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Strange1.Utility.DateTimeExtensions
 {
@@ -11,7 +9,9 @@ namespace Strange1.Utility.DateTimeExtensions
     {
         private static GregorianCalendar _gc = new GregorianCalendar();
 
-        static DateTimeExtensions() { }
+        static DateTimeExtensions()
+        {
+        }
 
         public static DateTime RoundToHour(this DateTime d)
         {
@@ -61,22 +61,27 @@ namespace Strange1.Utility.DateTimeExtensions
                     dtRounded = new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, d.Second, d.Kind);
                     if (d.Millisecond >= 500) dtRounded = dtRounded.AddSeconds(1);
                     break;
+
                 case RoundTo.Minute:
                     dtRounded = new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, 0, d.Kind);
                     if (d.Second >= 30) dtRounded = dtRounded.AddMinutes(1);
                     break;
+
                 case RoundTo.QuarterHour:
                     dtRounded = new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, 0, d.Kind);
                     if (d.Second >= 30) dtRounded = dtRounded.AddMinutes(1);
                     break;
+
                 case RoundTo.HalfHour:
                     dtRounded = new DateTime(d.Year, d.Month, d.Day, d.Hour, d.Minute, 0, d.Kind);
                     if (d.Second >= 30) dtRounded = dtRounded.AddMinutes(1);
                     break;
+
                 case RoundTo.Hour:
                     dtRounded = new DateTime(d.Year, d.Month, d.Day, d.Hour, 0, 0, d.Kind);
                     if (d.Minute >= 30) dtRounded = dtRounded.AddHours(1);
                     break;
+
                 case RoundTo.Day:
                     dtRounded = new DateTime(d.Year, d.Month, d.Day, 0, 0, 0, d.Kind);
                     if (d.Hour >= 12) dtRounded = dtRounded.AddDays(1);
@@ -110,7 +115,6 @@ namespace Strange1.Utility.DateTimeExtensions
             Month
         }
 
-
         public static int WeekdayOccurrence(this DateTime time)
         {
             return Enumerable.Range(1, time.Day)
@@ -139,12 +143,15 @@ namespace Strange1.Utility.DateTimeExtensions
                     case 1:
                         suffix = "st";
                         break;
+
                     case 2:
                         suffix = "nd";
                         break;
+
                     case 3:
                         suffix = "rd";
                         break;
+
                     default:
                         suffix = "th";
                         break;
@@ -170,12 +177,15 @@ namespace Strange1.Utility.DateTimeExtensions
                     case 1:
                         suffix = "st";
                         break;
+
                     case 2:
                         suffix = "nd";
                         break;
+
                     case 3:
                         suffix = "rd";
                         break;
+
                     default:
                         suffix = "th";
                         break;
@@ -279,7 +289,6 @@ namespace Strange1.Utility.DateTimeExtensions
             return dateTime.ToString("s", System.Globalization.CultureInfo.InvariantCulture);
         }
 
-
         /// <summary>
         /// Converts a System.DateTime object to Unix timestamp
         /// </summary>
@@ -298,8 +307,6 @@ namespace Strange1.Utility.DateTimeExtensions
             return unixEpoch.AddSeconds(epochSeconds);
         }
 
-
-
         /// <summary>
         ///  returns the current day
         /// </summary>
@@ -309,7 +316,6 @@ namespace Strange1.Utility.DateTimeExtensions
             int seconds = (int)dt.Second + ((int)dt.Minute * 60) + ((int)dt.Hour * 60 * 60);
             return dt.Subtract(TimeSpan.FromSeconds(seconds));
         }
-
 
         /// <summary>
         /// returns the number of minutes since midnight
@@ -326,7 +332,6 @@ namespace Strange1.Utility.DateTimeExtensions
         {
             return date.ForceLocalTimeIfUnspecified().Second + (date.ForceLocalTimeIfUnspecified().Minute * 60) + (date.ForceLocalTimeIfUnspecified().Hour * 60 * 60);
         }
-
 
         /// <summary>
         /// returns the current day of the week
@@ -350,7 +355,6 @@ namespace Strange1.Utility.DateTimeExtensions
             return (double)date.ForceLocalTimeIfUnspecified().DayOfWeek + 1;
         }
 
-
         /// <summary>
         /// returns the current day of the year
         /// </summary>
@@ -358,7 +362,6 @@ namespace Strange1.Utility.DateTimeExtensions
         {
             return (double)date.ForceLocalTimeIfUnspecified().DayOfYear;
         }
-
 
         /// <summary>
         /// returns true if the date is on a weekend
@@ -386,7 +389,6 @@ namespace Strange1.Utility.DateTimeExtensions
             DateTime dt = checkDate.Subtract(System.TimeSpan.FromDays(DaysToSubtract));
             return new DateTime(dt.Year, dt.Month, dt.Day, 0, 0, 0, 0);
         }
-
 
         /// <summary>
         /// returns the end of last week as a date
@@ -427,7 +429,6 @@ namespace Strange1.Utility.DateTimeExtensions
             return new DateTime(dt.Year, dt.Month, 1, 0, 0, 0, 0);
         }
 
-
         /// <summary>
         /// returns the timestamp that ends the month
         /// </summary>
@@ -454,7 +455,6 @@ namespace Strange1.Utility.DateTimeExtensions
             }
         }
 
-
         /// <summary>
         /// returns the timestamp that ends the previous month
         /// </summary>
@@ -469,8 +469,6 @@ namespace Strange1.Utility.DateTimeExtensions
             return end;
         }
 
-
-
         /// <summary>
         /// returns the timestamp of the start of the date
         /// </summary>
@@ -479,8 +477,6 @@ namespace Strange1.Utility.DateTimeExtensions
             DateTime dt = date.ForceLocalTimeIfUnspecified();
             return new DateTime(dt.Year, dt.Month, dt.Day, 0, 0, 0, 0);
         }
-
-
 
         /// <summary>
         /// returns the timestamp that starts the previous day
@@ -499,8 +495,6 @@ namespace Strange1.Utility.DateTimeExtensions
             return new DateTime(dt.Year, dt.Month, dt.Day, 23, 59, 59, 999);
         }
 
-
-
         /// <summary>
         /// returns the timestamp of the end of the previous day
         /// </summary>
@@ -508,7 +502,6 @@ namespace Strange1.Utility.DateTimeExtensions
         {
             return date.ForceLocalTimeIfUnspecified().AddDays(-1).EndOfDay();
         }
-
 
         /// <summary>
         /// returns the number of days since the date
@@ -518,7 +511,6 @@ namespace Strange1.Utility.DateTimeExtensions
             TimeSpan ts = TimeSpanSince(date.ForceLocalTimeIfUnspecified());
             return ts.TotalDays;
         }
-
 
         /// <summary>
         /// returns the number of hours since the date
@@ -538,7 +530,6 @@ namespace Strange1.Utility.DateTimeExtensions
             return ts.TotalMinutes;
         }
 
-
         /// <summary>
         /// returns the number of seconds since the date
         /// </summary>
@@ -547,7 +538,6 @@ namespace Strange1.Utility.DateTimeExtensions
             TimeSpan ts = TimeSpanSince(date.ForceLocalTimeIfUnspecified());
             return ts.TotalSeconds;
         }
-
 
         public static TimeSpan TimeSpanSince(this DateTime date)
         {
@@ -564,7 +554,6 @@ namespace Strange1.Utility.DateTimeExtensions
             TimeSpan ts = date1.Subtract(date2);
             return ts.TotalSeconds;
         }
-
 
         /// <summary>
         /// given two dates, return the difference in minutes
@@ -592,7 +581,6 @@ namespace Strange1.Utility.DateTimeExtensions
             TimeSpan ts = date1.Subtract(date2);
             return ts.TotalDays;
         }
-
 
         /// <summary/>
         public static DateTime StartOfYear(this DateTime date)
@@ -663,7 +651,7 @@ namespace Strange1.Utility.DateTimeExtensions
             for (int i = 0; i <= difference.Days; i++)
             {
                 DateTime newDate = lhs.AddDays(i);
-                if(newDate.DayOfWeek != System.DayOfWeek.Saturday && newDate.DayOfWeek != System.DayOfWeek.Sunday)
+                if (newDate.DayOfWeek != System.DayOfWeek.Saturday && newDate.DayOfWeek != System.DayOfWeek.Sunday)
                 {
                     dateRange.Add(newDate);
                 }
@@ -700,7 +688,6 @@ namespace Strange1.Utility.DateTimeExtensions
             }
             return dateRange;
         }
-
 
         public static int CountAllWeekDays(this DateTime lhs, DateTime futureDate)
         {
