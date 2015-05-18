@@ -2,71 +2,74 @@
 
 namespace Strange1.Utility.DateTimeExtensions
 {
+    /// <summary>
+    /// see https://www.ics.uci.edu/~alspaugh/cls/shr/allen.html
+    /// </summary>
     public static class AllenIntervalRules
     {
-        public static bool Overlaps(this TimePeriod x, TimePeriod y)
+        public static bool Overlaps(this TimePeriod a, TimePeriod b)
         {
-            return (x.UtcStartTime < y.UtcStartTime) && ((x.UtcEndTime > y.UtcStartTime) && (x.UtcEndTime < y.UtcEndTime));
+            return (a.UtcStartTime < b.UtcStartTime) && ((a.UtcEndTime > b.UtcStartTime) && (a.UtcEndTime < b.UtcEndTime));
         }
 
-        public static bool OverlapedBy(this TimePeriod x, TimePeriod y)
+        public static bool OverlapedBy(this TimePeriod a, TimePeriod b)
         {
-            return (y.UtcStartTime < x.UtcStartTime) && ((y.UtcEndTime > x.UtcStartTime) && (y.UtcEndTime < x.UtcEndTime));
+            return (b.UtcStartTime < a.UtcStartTime) && ((b.UtcEndTime > a.UtcStartTime) && (b.UtcEndTime < a.UtcEndTime));
         }
 
-        public static bool TakesPlaceBefore(this TimePeriod x, TimePeriod y)
+        public static bool Precedes(this TimePeriod a, TimePeriod b)
         {
-            return x.UtcEndTime < y.UtcStartTime;
+            return a.UtcEndTime < b.UtcStartTime && ((b.UtcStartTime - a.UtcEndTime).TotalMilliseconds > 0);
         }
 
-        public static bool TakesPlaceAfter(this TimePeriod x, TimePeriod y)
+        public static bool PrecededBy(this TimePeriod a, TimePeriod b)
         {
-            return x.UtcStartTime > y.UtcEndTime;
+            return a.UtcStartTime > b.UtcEndTime && ((a.UtcStartTime - b.UtcEndTime).TotalMilliseconds > 0);
         }
 
-        public static bool Meets(this TimePeriod x, TimePeriod y)
+        public static bool Meets(this TimePeriod a, TimePeriod b)
         {
-            return (x.UtcEndTime == y.UtcStartTime);
+            return (a.UtcEndTime == b.UtcStartTime);
         }
 
-        public static bool MetBy(this TimePeriod x, TimePeriod y)
+        public static bool MetBy(this TimePeriod a, TimePeriod b)
         {
-            return (y.UtcEndTime == x.UtcStartTime);
+            return (b.UtcEndTime == a.UtcStartTime);
         }
 
-        public static bool StartedBy(this TimePeriod x, TimePeriod y)
+        public static bool StartedBy(this TimePeriod a, TimePeriod b)
         {
-            return (y.UtcStartTime == x.UtcStartTime) && (y.UtcEndTime < x.UtcEndTime);
+            return (b.UtcStartTime == a.UtcStartTime) && (b.UtcEndTime < a.UtcEndTime);
         }
 
-        public static bool Starts(this TimePeriod x, TimePeriod y)
+        public static bool Starts(this TimePeriod a, TimePeriod b)
         {
-            return (x.UtcStartTime == y.UtcStartTime) && (x.UtcEndTime < y.UtcEndTime);
+            return (a.UtcStartTime == b.UtcStartTime) && (a.UtcEndTime < b.UtcEndTime);
         }
 
-        public static bool Contains(this TimePeriod x, TimePeriod y)
+        public static bool Contains(this TimePeriod a, TimePeriod b)
         {
-            return (y.UtcStartTime > x.UtcStartTime) && (y.UtcEndTime < x.UtcEndTime);
+            return (b.UtcStartTime > a.UtcStartTime) && (b.UtcEndTime < a.UtcEndTime);
         }
 
-        public static bool ContainedBy(this TimePeriod x, TimePeriod y)
+        public static bool During(this TimePeriod a, TimePeriod b)
         {
-            return (x.UtcStartTime > y.UtcStartTime) && (x.UtcEndTime < y.UtcEndTime);
+            return (a.UtcStartTime > b.UtcStartTime) && (a.UtcEndTime < b.UtcEndTime);
         }
 
-        public static bool FinishedBy(this TimePeriod x, TimePeriod y)
+        public static bool FinishedBy(this TimePeriod a, TimePeriod b)
         {
-            return (y.UtcEndTime == x.UtcEndTime) && (y.UtcStartTime > x.UtcStartTime);
+            return (b.UtcEndTime == a.UtcEndTime) && (b.UtcStartTime > a.UtcStartTime);
         }
 
-        public static bool Finishes(this TimePeriod x, TimePeriod y)
+        public static bool Finishes(this TimePeriod a, TimePeriod b)
         {
-            return (x.UtcEndTime == y.UtcEndTime) && (x.UtcStartTime > y.UtcStartTime);
+            return (a.UtcEndTime == b.UtcEndTime) && (a.UtcStartTime > b.UtcStartTime);
         }
 
-        public static bool IsEqualTo(this TimePeriod x, TimePeriod y)
+        public static bool IsEqualTo(this TimePeriod a, TimePeriod b)
         {
-            return (x.UtcStartTime == y.UtcStartTime) && (x.UtcEndTime == y.UtcEndTime);
+            return (a.UtcStartTime == b.UtcStartTime) && (a.UtcEndTime == b.UtcEndTime);
         }
     }
 }
