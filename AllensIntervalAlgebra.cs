@@ -5,7 +5,7 @@ namespace Strange1.Utility.DateTimeExtensions
     /// <summary>
     /// see https://www.ics.uci.edu/~alspaugh/cls/shr/allen.html
     /// </summary>
-    public static class AllenIntervalRules
+    public static class AllensIntervalAlgebra
     {
         public static bool Overlaps(this TimePeriod a, TimePeriod b)
         {

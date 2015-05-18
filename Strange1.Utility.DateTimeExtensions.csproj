@@ -77,7 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllenIntervalRules.cs" />
+    <Compile Include="AllensIntervalAlgebra.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
