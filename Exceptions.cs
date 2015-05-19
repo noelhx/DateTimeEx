@@ -2,21 +2,38 @@
 
 namespace Strange1.Utility.DateTimeExtensions
 {
-    public class InvalidTimePeriodException : Exception
+    /// <summary>
+    /// exception thrown when trying to create an interval with a start time greater than the end time
+    /// </summary>
+    public class InvalidIntervalException : Exception
     {
-        public InvalidTimePeriodException()
-            : base() { }
+        #region Constructors
 
-        public InvalidTimePeriodException(string message)
-            : base(message) { }
+        public InvalidIntervalException()
+            : base()
+        {
+        }
 
-        public InvalidTimePeriodException(string format, params object[] args)
-            : base(string.Format(format, args)) { }
+        public InvalidIntervalException(string message)
+            : base(message)
+        {
+        }
 
-        public InvalidTimePeriodException(string message, Exception innerException)
-            : base(message, innerException) { }
+        public InvalidIntervalException(string format, params object[] args)
+            : base(string.Format(format, args))
+        {
+        }
 
-        public InvalidTimePeriodException(string format, Exception innerException, params object[] args)
-            : base(string.Format(format, args), innerException) { }
+        public InvalidIntervalException(string message, Exception innerException)
+            : base(message, innerException)
+        {
+        }
+
+        public InvalidIntervalException(string format, Exception innerException, params object[] args)
+            : base(string.Format(format, args), innerException)
+        {
+        }
+
+        #endregion Constructors
     }
 }
