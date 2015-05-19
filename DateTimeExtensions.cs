@@ -115,10 +115,16 @@ namespace Strange1.Utility.DateTimeExtensions
             Month
         }
 
-        public static int WeekdayOccurrence(this DateTime time)
+        public static int WeekdayOccurrenceInMonth(this DateTime datetime)
         {
-            return Enumerable.Range(1, time.Day)
-                .Where(d => new DateTime(time.Year, time.Month, d).DayOfWeek == time.DayOfWeek).Count();
+            return Enumerable.Range(1, datetime.Day)
+                .Where(d => new DateTime(datetime.Year, datetime.Month, d).DayOfWeek == datetime.DayOfWeek).Count();
+        }
+
+        public static int WeekdayOccurrenceInYear(this DateTime datetime)
+        {
+            return Enumerable.Range(1, datetime.Day)
+                .Where(d => new DateTime(datetime.Year, 1, d).DayOfWeek == datetime.DayOfWeek).Count();
         }
 
         public static int WeekOfYear(this DateTime time, DayOfWeek dayOfWeek = System.DayOfWeek.Sunday)
@@ -160,39 +166,39 @@ namespace Strange1.Utility.DateTimeExtensions
             return suffix;
         }
 
-        public static string Ordinal(this int value)
-        {
-            string suffix = "th";
+        //public static string Ordinal(this int value)
+        //{
+        //    string suffix = "th";
 
-            int ones = value % 10;
-            int tens = (int)(Math.Floor((double)(value / 10)) % 10);
-            if (tens == 1)
-            {
-                suffix = "th";
-            }
-            else
-            {
-                switch (ones)
-                {
-                    case 1:
-                        suffix = "st";
-                        break;
+        //    int ones = value % 10;
+        //    int tens = (int)(Math.Floor((double)(value / 10)) % 10);
+        //    if (tens == 1)
+        //    {
+        //        suffix = "th";
+        //    }
+        //    else
+        //    {
+        //        switch (ones)
+        //        {
+        //            case 1:
+        //                suffix = "st";
+        //                break;
 
-                    case 2:
-                        suffix = "nd";
-                        break;
+        //            case 2:
+        //                suffix = "nd";
+        //                break;
 
-                    case 3:
-                        suffix = "rd";
-                        break;
+        //            case 3:
+        //                suffix = "rd";
+        //                break;
 
-                    default:
-                        suffix = "th";
-                        break;
-                }
-            }
-            return string.Format("{0}{1}", value, suffix);
-        }
+        //            default:
+        //                suffix = "th";
+        //                break;
+        //        }
+        //    }
+        //    return string.Format("{0}{1}", value, suffix);
+        //}
 
         public static DateTime AddTimespan(this DateTime datetime, TimeSpan timespan)
         {
@@ -238,6 +244,11 @@ namespace Strange1.Utility.DateTimeExtensions
         public static bool Between(this DateTime dateTime, TimePeriod timePeriod)
         {
             return dateTime.ToUniversalTime().IsGreaterThanOrEqualTo(timePeriod.UtcStartTime) && dateTime.ToUniversalTime().IsLessThanOrEqualTo(timePeriod.UtcEndTime);
+        }
+
+        public static double ToJulianDate(this DateTime date)
+        {
+            return date.ToOADate() + 2415018.5;
         }
 
         public static int CompareTo(this DateTime dateTime, TimePeriod timePeriod)
