@@ -1,0 +1,40 @@
+id
+datetime2
+month of year 1-12
+month name
+yearmonth - 201505
+year
+julian date
+quarter = 201501, 201502, 201503, 201504
+quarter = 2015Q1, 2015Q2, 2015Q3, 2015Q4
+seconds of year
+seconds of month
+seconds of week
+seconds of day
+seconds of hour
+seconds of minute
+minute of year
+minute of month
+minute of week
+minute of day
+minute of hour
+hour of year
+hour of month
+hour of week
+hour of day
+day of year
+day of month
+day of week
+day of week name
+day of month ordinal
+day of year ordinal
+week of year
+week of month
+morning - t/f (06:00-12:00)
+afternoon - t/f (12:00-18:00)
+evening - t/f (18:00-00:00)
+night - t/f (00:00-06:00)
+is leap year
+is leap day - feb 29
+
+
