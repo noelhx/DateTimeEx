@@ -81,8 +81,8 @@
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimePeriod.cs" />
-    <Compile Include="TimePeriodExtensions.cs" />
+    <Compile Include="Interval.cs" />
+    <Compile Include="IntervalExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
