@@ -307,6 +307,26 @@ namespace Strange1.Utility.DateTimeExtensions
             return unixEpoch.AddSeconds(epochSeconds);
         }
 
+        public static double ToExcelSerialDate(this DateTime date)
+        {
+            return date.ToOADate();
+        }
+
+        public static DateTime ExcelSerialDateToDateTime(this double serialDate)
+        {
+            DateTime result = DateTime.MinValue.ToUniversalTime();
+            try
+            {
+                result = DateTime.FromOADate(serialDate);
+            }
+            catch (Exception)
+            {
+                string message = string.Format("{0} is not a valid Excel serial date", serialDate);
+                throw new System.ArgumentException(message);
+            }
+            return result;
+        }
+
         /// <summary>
         ///  returns the current day
         /// </summary>
